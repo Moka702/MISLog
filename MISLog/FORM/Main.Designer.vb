@@ -35,22 +35,23 @@ Partial Class Main
         Me.lbl_state = New System.Windows.Forms.Label()
         Me.TimerTelegram = New System.Windows.Forms.Timer(Me.components)
         Me.hidden = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'test
         '
-        Me.test.Location = New System.Drawing.Point(197, 127)
+        Me.test.Location = New System.Drawing.Point(12, 125)
         Me.test.Name = "test"
-        Me.test.Size = New System.Drawing.Size(68, 23)
+        Me.test.Size = New System.Drawing.Size(360, 23)
         Me.test.TabIndex = 10
-        Me.test.Text = "TEST"
+        Me.test.Text = "SEND TEST MESSAGE"
         Me.test.UseVisualStyleBackColor = True
         '
         'chat_id
         '
         Me.chat_id.Location = New System.Drawing.Point(12, 97)
         Me.chat_id.Name = "chat_id"
-        Me.chat_id.Size = New System.Drawing.Size(331, 20)
+        Me.chat_id.Size = New System.Drawing.Size(275, 20)
         Me.chat_id.TabIndex = 9
         '
         'Label3
@@ -67,7 +68,7 @@ Partial Class Main
         Me.bot_token.Location = New System.Drawing.Point(12, 56)
         Me.bot_token.Name = "bot_token"
         Me.bot_token.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.bot_token.Size = New System.Drawing.Size(331, 20)
+        Me.bot_token.Size = New System.Drawing.Size(275, 20)
         Me.bot_token.TabIndex = 7
         '
         'Label2
@@ -81,9 +82,9 @@ Partial Class Main
         '
         'save
         '
-        Me.save.Location = New System.Drawing.Point(275, 127)
+        Me.save.Location = New System.Drawing.Point(293, 56)
         Me.save.Name = "save"
-        Me.save.Size = New System.Drawing.Size(68, 23)
+        Me.save.Size = New System.Drawing.Size(79, 23)
         Me.save.TabIndex = 11
         Me.save.Text = "SAVE"
         Me.save.UseVisualStyleBackColor = True
@@ -102,7 +103,7 @@ Partial Class Main
         '
         Me.start.Location = New System.Drawing.Point(12, 161)
         Me.start.Name = "start"
-        Me.start.Size = New System.Drawing.Size(329, 23)
+        Me.start.Size = New System.Drawing.Size(360, 23)
         Me.start.TabIndex = 13
         Me.start.Text = "START"
         Me.start.UseVisualStyleBackColor = True
@@ -128,11 +129,21 @@ Partial Class Main
         Me.hidden.Text = "MISLog"
         Me.hidden.Visible = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(293, 96)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(79, 23)
+        Me.Button1.TabIndex = 15
+        Me.Button1.Text = "SAVE"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(353, 216)
+        Me.ClientSize = New System.Drawing.Size(379, 216)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lbl_state)
         Me.Controls.Add(Me.start)
         Me.Controls.Add(Me.send_telegram)
@@ -142,6 +153,7 @@ Partial Class Main
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.bot_token)
         Me.Controls.Add(Me.Label2)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "Main"
@@ -163,4 +175,5 @@ Partial Class Main
     Friend WithEvents lbl_state As Label
     Friend WithEvents TimerTelegram As Timer
     Friend WithEvents hidden As NotifyIcon
+    Friend WithEvents Button1 As Button
 End Class

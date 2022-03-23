@@ -5,7 +5,6 @@ Module Telegram
     Public Sub sendMessage(terminal As Integer, type As String, message As String, data As String, time As String, sessionID As String)
         Try
             Dim api_url = "https://api.telegram.org/bot{0}/sendMessage"
-            MsgBox(String.Format(api_url, My.Settings.bot_token))
 
             Using client As New Net.WebClient
                 Dim reqparm As New Specialized.NameValueCollection

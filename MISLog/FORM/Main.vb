@@ -6,7 +6,6 @@ Public Class Main
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         checkSendDB()
         send_telegram.Checked = My.Settings.send_telegram
-        bot_token.Text = "00000000"
         chat_id.Text = My.Settings.chat_id
     End Sub
 
@@ -24,14 +23,21 @@ Public Class Main
 
     Private Sub start_Click(sender As Object, e As EventArgs) Handles start.Click
         If (My.Settings.bot_token <> "" And My.Settings.chat_id <> "") Then
-            TimerTelegram.Start()
-            lbl_state.Text = "WORKING"
-            lbl_state.ForeColor = Color.Green
-
-            GravarLog(Tipo:="INFO", Modd:=MethodBase.GetCurrentMethod.ToString, Msg:="Start Process")
-
-            Me.Hide()
-            hidden.ShowBalloonTip(2000, "It's still running!", "MISLog", ToolTipIcon.Info)
+            If TimerTelegram.Enabled = True Then
+                TimerTelegram.Stop()
+                start.Text = "START"
+                lbl_state.Text = "STOPPED"
+                lbl_state.ForeColor = Color.Red
+                GravarLog(Tipo:="INFO", Modd:=MethodBase.GetCurrentMethod.ToString, Msg:="Stop Process")
+            Else
+                TimerTelegram.Start()
+                lbl_state.Text = "WORKING"
+                start.Text = "STOP"
+                lbl_state.ForeColor = Color.Green
+                GravarLog(Tipo:="INFO", Modd:=MethodBase.GetCurrentMethod.ToString, Msg:="Start Process")
+                hidden.ShowBalloonTip(2000, "It's still running!", "MISLog", ToolTipIcon.Info)
+                Me.WindowState = FormWindowState.Minimized
+            End If
         Else
             MessageBox.Show("Param [bot_token, chat_id] not found", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
@@ -41,7 +47,7 @@ Public Class Main
         Try
             Using con As SQLiteConnection = GetConnectionLOG()
                 con.Open()
-                Dim sql As String = "select SessionID, Terminal, Date, Time, Description, AdditionalErrorDescription FROM Log LIMIT 1"
+                Dim sql As String = "select SessionID, Terminal, Date, Time, Description, AdditionalErrorDescription FROM Log WHERE Description like '%Error%' and send = 0"
                 Dim cmd As New SQLiteCommand(sql, con)
                 Dim read As SQLiteDataReader = cmd.ExecuteReader()
                 While read.Read() = True
