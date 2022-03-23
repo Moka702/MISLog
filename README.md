@@ -2,7 +2,7 @@
 Send your MIS Comunicator Logs to Telegram
 
 ## Important
-> :warning: **when running for the first time turns off the MIS Comunicator**Cancel changes
+> :warning: **when running for the first time turns off the MIS Comunicator**
 
 ### USING
  - Download MISLog xx.xx.xxxx.zip
