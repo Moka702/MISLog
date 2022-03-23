@@ -10,7 +10,7 @@ USING
  - Use Start button to run program in background
 ##It's all
 
-Telegram API documentation - https://core.telegram.org/
-MIS Comunicator Docs - https://doc.sysdevmobile.com/miscommunicator/
+- Telegram API documentation - https://core.telegram.org/
+- MIS Comunicator Docs - https://doc.sysdevmobile.com/miscommunicator/
 
-by Moka702
+#by Moka702
