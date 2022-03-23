@@ -15,10 +15,16 @@ Public Class Main
 
     Private Sub save_Click(sender As Object, e As EventArgs) Handles save.Click
         My.Settings.bot_token = bot_token.Text
+        My.Settings.send_telegram = send_telegram.CheckState
+        MessageBox.Show("Data saved!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        GravarLog(Tipo:="INFO", Modd:=MethodBase.GetCurrentMethod.ToString, Msg:="bot_token updated")
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         My.Settings.chat_id = chat_id.Text
         My.Settings.send_telegram = send_telegram.CheckState
-        MessageBox.Show("All data saved!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        GravarLog(Tipo:="INFO", Modd:=MethodBase.GetCurrentMethod.ToString, Msg:="Data Updated")
+        MessageBox.Show("Data saved!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        GravarLog(Tipo:="INFO", Modd:=MethodBase.GetCurrentMethod.ToString, Msg:="chat_id updated")
     End Sub
 
     Private Sub start_Click(sender As Object, e As EventArgs) Handles start.Click
@@ -74,4 +80,6 @@ Public Class Main
             hidden.ShowBalloonTip(2000, "It's still running!", "MISLog", ToolTipIcon.Info)
         End If
     End Sub
+
+
 End Class
